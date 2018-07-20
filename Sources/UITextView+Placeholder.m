@@ -173,6 +173,16 @@
         [self.placeholderLabel removeFromSuperview];
     } else {
         [self insertSubview:self.placeholderLabel atIndex:0];
+
+        NSLayoutConstraint *height = [NSLayoutConstraint
+                                      constraintWithItem:self
+                                      attribute:NSLayoutAttributeHeight
+                                      relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                      toItem:self.placeholderLabel
+                                      attribute:NSLayoutAttributeHeight
+                                      multiplier:1
+                                      constant:0];
+        [self addConstraint:height];
     }
 
     if (self.needsUpdateFont) {
